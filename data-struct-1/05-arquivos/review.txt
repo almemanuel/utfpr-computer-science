@@ -1,0 +1,80 @@
+---
+Arquivo é uma coleção de bytes armazenados em um dispositivo de armazenamento secundário
+---
+Vantagens:
+- não volátil
+- permitem armazenar muita informação
+- acesso concorrente aos dados
+---
+A extensão não define o tipo do arquivo, mas sim a maneira como os dados estão organizados e as operações usadas para processar esse arquivo
+---
+A linguagem C utiliza um tipo especial de ponteiro na biblioteca stdio, FILE, para trabalhar com arquivos
+É possivel trabalhar com arquivos de texto e arquivos binarios
+- Arquivo de Texto: gravados exatamente da forma como os dados serão exibidos, utilizando caracters da 8 bits da tabela ASCII. Para isso, ocorre uma conversão, que acaba gerando arquivos maiores e processamento lento.
+- Arquivo binário: gravados exatamente como estão organizados na memoria do computador
+---
+Para abrir um arquivo, utiliza-se FILE *fopen("nome_arquivo.ext", "modo")
+Ex: FILE *f; f = fopen("arquivo.txt", "w");
+Se fopen nao conseguir abrir o arquivo, sera retornado NULL
+---
+Modos:
+- r: leitura em arquivo existente;
+- w: escrita de novo arquivo ou sobescrita em existente;
+- rb: leitura de binario existente;
+- wb: escrita de novo binario ou sobescrita em existente;
+- a: append;
+- ab: append de binario.
+Existem outros modos
+---
+Sempre apos trabalhar com um arquivo é necessário fechá-lo, usando fclose(variable)
+---
+fputc(caracter, arquivo): escreve um caractere no arquivo
+Em caso de erro retorna EOF
+Em caso de sucesso, o proprio caractere
+---
+fgetc(variavel_arquivo): le um caractere de um arquivo
+Retorna EOF (erro) ou o caractere lido
+Para ler todos os caracteres, usa-se a constante EOF como referencia para atingir o fim do arquivo
+---
+EOF: End of File (fim do arquivo)
+Para nao ocorrer problemas em binarios, é utilizado a função feof(arquivo), que retorna 0 se ainda não estiver no final do arquivo
+---
+fputs(string, arquivo) escreve uma string em um arquivo, retornando EOF em caso de erro
+A função não adicion \n ao fim da cadeia
+Obs: ao testar em uma condicional, a gravacao sera executada
+---
+fgets(string, tamanho, arquivo) le uma string de um arquivo, retornando NULL em caso de erro, caso contrario, retorna um ponteiro para o primeiro caractere da string
+A leitura é feita até o caractere \n ou tamanho - 1
+---
+para dados mais complexos que char, é preferivel utilizar arquivos binarios
+---
+fwite(buffer, bytes, count, arquivo) escreve um bloco de bytes
+- buffer: ponteiro generico para os dados
+- bytes: tamanho, em byte, de cada unidade de dado a ser gravada
+- count: total de unidades de dados que devem ser gravadas
+- arquivo: ponteiro para o arquivo
+Retorna o total de unidades de dados gravadas com sucesso
+---
+fread(buffer, bytes, count, arquivo) le um bloco de bytes
+- buffer: ponteiro generico para os dados
+- bytes: tamanho, em byte, de cada unidade de dado a ser lida
+- count: total de unidades de dados que devem ser lidas
+- arquivo: ponteiro para o arquivo
+Retorna o total de unidades de dados lidas com sucesso
+---
+fprintf(arquivo, "saida", variaveis) permite escrever uma lista formatada de variaveis do mesmo modo que printf("saida", variaveis), porem, em vez de imprimir na tela, a formatacao é enviada para um arquivo
+---
+fscanf(arquivo, "formatacao", end_variaveis) permite ler uma lista formatada de dados em um arquivo, semelhante ao scanf("formatacao", end_variaveis)
+---
+fseek(arq, numbytes, origem) permite leitura e escrita randomica em um arquivo
+melhor aplicado em binarios
+- numbytes: tamanho do passo a partir da origem, em bytes
+- origem: ponto a partir do qual o passo sera feito
+Se falhar, retorna diferente de 0
+Sobre a origem:
+- SEEK_SET = 0 -> inicio do arquivo
+- SEEK_CUR = 1 -> ponto atual no arquivo
+- SEEK_END = 2 -> fim do arquivo
+---
+rewind(arq) retorna para o inicio do arquivo
+---
