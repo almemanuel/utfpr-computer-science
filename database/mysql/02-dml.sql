@@ -1,0 +1,40 @@
+USE BIBLIOTECA;
+SHOW TABLES;
+
+INSERT INTO EDITORA (Nome) VALUES ("Casa Publicadora");
+SELECT CODEDITORA, NOME FROM EDITORA;
+
+INSERT INTO EDITORA (Nome) VALUES ("Câmpus");
+SELECT CODEDITORA, NOME FROM EDITORA;
+
+INSERT INTO AUTOR (Nome) VALUES ("Benjamin Carson");
+SELECT CODAUTOR, NOME FROM AUTOR;
+
+INSERT INTO ACERVO (Titulo, PrazoEntrega, VlrMulta, LocalEdicao, DtEdicao, QtdeEmprestimo, CodEditora) VALUES ("Risco Calculado: Aprenda a Decidir com Ousadia", 10, 3.50, "São Paulo", "2011-01-13", 5, 1);
+INSERT INTO ACERVO (Titulo, PrazoEntrega, VlrMulta, LocalEdicao, DtEdicao, QtdeEmprestimo, CodEditora) VALUES ("Pense Alto", 15, 3.50, "Rio de Janeiro", "2005-12-02", 5, 1);
+SELECT CodAcervo, Titulo, CodEditora FROM ACERVO;
+
+INSERT INTO AUTORIA (CodAcervo, CodAutor) VALUES (1, 1);
+SELECT * FROM AUTORIA;
+
+SELECT CodAcervo, Titulo, CodISBN FROM ACERVO;
+UPDATE ACERVO SET CodISBN = 978031026 WHERE CodAcervo = 2;
+SELECT CodAcervo, Titulo, CodISBN FROM ACERVO;
+
+INSERT INTO AUTOR (Nome) VALUES ("Cecil Murphey");
+SELECT * FROM AUTOR;
+DELETE FROM AUTOR WHERE CodAutor = 2;
+SELECT * FROM AUTOR;
+
+INSERT INTO AUTOR (Nome) VALUES ("Allan Pearse");
+INSERT INTO AUTOR (Nome) VALUES ("Gary Chapman");
+INSERT INTO AUTOR (Nome) VALUES ("Augusto Cury");
+SELECT * FROM AUTOR;
+SELECT * FROM AUTOR ORDER BY Nome;
+SELECT * FROM AUTOR ORDER BY Nome DESC;
+
+SELECT Titulo, LocalEdicao FROM ACERVO WHERE LOCALEDICAO = "São Paulo";
+SELECT Titulo, LocalEdicao FROM ACERVO WHERE LOCALEDICAO <> "São Paulo";
+
+SELECT COUNT(*), AVG(VlrMulta), SUM(VlrMulta), SUM(VlrMulta), MIN(VlrMulta), MAX(VlrMulta) FROM ACERVO;
+SELECT COUNT(*), Nome FROM ACERVO, EDITORA WHERE ACERVO.CodEditora = EDITORA.CodEditora GROUP BY NOME HAVING COUNT(*) > 1 ORDER BY Nome;
