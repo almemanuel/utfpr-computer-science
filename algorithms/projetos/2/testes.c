@@ -1,11 +1,5 @@
 /*************************************************************************************************************
-Link para o Vídeo: https://drive.google.com/file/d/1q3uFA6L-uQ_s0v3JTnjzixCKDmbP0cJC/view?usp=sharing
-
-Eduardo Almeida Dias Bento
-RA: 2319152
-
-Emanuel de Almeida Souza
-RA: 2317915
+Desenvolvido por Emanuel Almeida e Eduardo Bento
 *************************************************************************************************************/
 
 #include "analisapixel.h"

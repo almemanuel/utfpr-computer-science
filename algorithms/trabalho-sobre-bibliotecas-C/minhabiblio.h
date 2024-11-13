@@ -1,8 +1,5 @@
 /*****************************************************************************************************
-Nomes:  Eduardo de Almeida Bento Dias   Emanuel de Almeida Souza
-RAs:    2319152                         2317915
-
-Vídeo disponível em https://drive.google.com/file/d/1_D1pUyWmNEfpBtIe7ybvtb27P4TTECO4/view?usp=sharing
+Desenvolvido por Emanuel Almeida e Eduardo Bento
 *****************************************************************************************************/
 
 #ifndef MINHABIBLIO_H
